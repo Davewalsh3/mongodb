@@ -1,0 +1,25 @@
+just in case you wish to have this info, I exchanged with one of tutors and received these instructions:
+setting the environment variables is a bit different with Gitpod. I can send you on a little tutorial of an alternative (more professional) way of setting environment variables!
+Here is how to set environment variables:
+Create a file named env.py in the root directory of your project. 
+This is the file you will use to define your environment variables.
+If you don’t have one already, create a file named .gitignore  in the root directory
+ of your project.
+
+Next we need to stop git from pushing this file to github, and so keep your environment variables secret.
+ To do this, open your .gitignore  file add the following text: env.py 
+At the top of your env.py  file, you need to import os so that you can set the environment variables in the operating system.
+ Once you have added the line “import os” underneath you can assign your environment variables using the following syntax: 
+os.environ["Variable Name Here"] = "Value of Variable Goes Here" 
+Example: os.environ[“MONGODB_NAME”] = “mydatabase”
+Then the following code imports this new env.py file where you need to use your environment variables. 
+For example your app.py file for flask project or settings.py file for Django project. Add this under your other imports at the top of the file. 
+
+''from os import path
+if path.exists(“env.py”):
+  import env ''
+
+The if statement here is so that the env.py file is only pulled when working on your code in your workspace, 
+not when it is deployed on heroku. For deployment you can set your environment variables in the heroku dashboard in settings > config vars.
+Now that your environment variables have been set in your env.py file, and the file has been imported into your project, you can use them as needed using the following syntax: 
+MONGODB_NAME = os.environ.get('MONGODB_NAME') 
