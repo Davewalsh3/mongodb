@@ -4,7 +4,7 @@ if os.path.exists("env.py"):
     import env
 
 
-MONGODB_URI = os.environ.get("MONGODB_URI")
+MONGODB_URI = os.environ.get("MONGODB_URIs")
 
 DBS_NAME = "mytestdatabase"
 
